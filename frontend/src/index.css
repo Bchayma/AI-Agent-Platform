@@ -1,0 +1,124 @@
+:root {
+  --bg: #0a0a0f;
+  --bg-2: #0f0f1a;
+  --bg-3: #14141f;
+  --surface: #1a1a2e;
+  --surface-2: #1e1e35;
+  --border: rgba(100, 100, 200, 0.15);
+  --border-bright: rgba(100, 100, 255, 0.35);
+  --text: #e8e8f0;
+  --text-muted: #7070a0;
+  --text-dim: #4a4a70;
+  --accent: #6c63ff;
+  --accent-2: #a78bfa;
+  --accent-3: #38bdf8;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --font-body: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --radius: 12px;
+  --radius-sm: 6px;
+  --radius-lg: 20px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --glow: 0 0 40px rgba(108, 99, 255, 0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ── Typography ─────────────────────────────────────────── */
+h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
+a { color: var(--accent-2); text-decoration: none; }
+code, pre { font-family: var(--font-mono); }
+
+/* ── Utility classes ────────────────────────────────────── */
+.glass {
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+}
+
+.glow-border {
+  border: 1px solid var(--border-bright);
+  box-shadow: var(--glow);
+}
+
+/* ── Animations ─────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(108,99,255,0.3); }
+  50%       { box-shadow: 0 0 30px rgba(108,99,255,0.6); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-fade  { animation: fadeIn 0.4s ease both; }
+.animate-pulse { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-spin  { animation: spin 1s linear infinite; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+/* ── Markdown output styling ────────────────────────────── */
+.markdown-body {
+  line-height: 1.75;
+  font-size: 0.93rem;
+  color: var(--text);
+}
+.markdown-body h1 { font-size: 1.6rem; margin: 1.5rem 0 .75rem; color: var(--accent-2); }
+.markdown-body h2 { font-size: 1.25rem; margin: 1.25rem 0 .6rem; color: var(--accent-2); border-bottom: 1px solid var(--border); padding-bottom: .4rem; }
+.markdown-body h3 { font-size: 1.05rem; margin: 1rem 0 .5rem; color: var(--accent-3); }
+.markdown-body p  { margin-bottom: .85rem; }
+.markdown-body ul, .markdown-body ol { padding-left: 1.5rem; margin-bottom: .85rem; }
+.markdown-body li { margin-bottom: .35rem; }
+.markdown-body code {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: .1rem .4rem;
+  font-size: .85em;
+  color: var(--accent-3);
+}
+.markdown-body pre {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+.markdown-body pre code { background: none; border: none; padding: 0; color: var(--text); }
+.markdown-body blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  color: var(--text-muted);
+  margin-bottom: .85rem;
+}
+.markdown-body table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+.markdown-body th { background: var(--surface); padding: .5rem .75rem; text-align: left; font-size: .85rem; color: var(--text-muted); }
+.markdown-body td { padding: .5rem .75rem; border-bottom: 1px solid var(--border); font-size: .88rem; }
+.markdown-body strong { color: var(--accent-2); font-weight: 600; }
